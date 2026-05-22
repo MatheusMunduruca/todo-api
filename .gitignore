@@ -5,5 +5,3 @@ obj/
 .vscode/
 *.suo
 appsettings.Development.json
-# IDE local config
-.claude/
