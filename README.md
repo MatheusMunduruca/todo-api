@@ -12,6 +12,7 @@ API REST de gerenciamento de tarefas desenvolvida em **C# (.NET 8)** com autenti
 - BCrypt para hash de senhas
 - Swagger / OpenAPI
 - Docker + Docker Compose
+- xUnit + Moq (testes unitários)
 
 ---
 
@@ -104,3 +105,19 @@ Authorization: Bearer {token}
 - `Pending` — pendente (padrão)
 - `InProgress` — em andamento
 - `Done` — concluída
+
+---
+
+## Testes
+
+O projeto possui **20 testes unitários** cobrindo os controllers e serviços.
+
+```bash
+cd tests/TodoApi.Tests
+dotnet test
+```
+
+Cobertura:
+- `TokenService` — geração e validação de JWT
+- `AuthController` — registro e login (credenciais válidas, inválidas, e-mail duplicado)
+- `TasksController` — CRUD completo com isolamento por usuário
