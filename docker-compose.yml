@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todo_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  api:
+    build: .
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      ConnectionStrings__Default: "Server=db;Port=3306;Database=todo_db;User=root;Password=root;"
+      Jwt__Key: "TROQUE_ESTA_CHAVE_POR_UMA_STRING_LONGA_E_SEGURA_32CHARS+"
+      Jwt__Issuer: "TodoApi"
+      Jwt__Audience: "TodoApiUsers"
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
