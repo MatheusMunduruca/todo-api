@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Usa Pomelo (driver MySQL compatível com .NET 8)
 var connString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseMySql(connString, ServerVersion.AutoDetect(connString)));
+    opt.UseMySql(connString, new MySqlServerVersion(new Version(8, 0, 46))));
 
 // ── Serviços customizados ─────────────────────────────────────────────────────
 builder.Services.AddScoped<TokenService>();
@@ -105,7 +105,13 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    if (db.Database.IsRelational())
+        db.Database.Migrate();
+    else
+        db.Database.EnsureCreated();
 }
 
 app.Run();
+
+// Expõe Program para WebApplicationFactory nos testes de integração
+public partial class Program { }
