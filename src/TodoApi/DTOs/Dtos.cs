@@ -7,7 +7,9 @@ public record RegisterRequest(string Name, [EmailAddress] string Email, string P
 
 public record LoginRequest(string Email, string Password);
 
-public record AuthResponse(string Token, string Name, string Email);
+public record AuthResponse(string Token, string Name, string Email, decimal GoldBalance, string? WelcomeDialogue = null);
+
+public record DeductGoldRequest(decimal Amount);
 
 // ── Tasks ─────────────────────────────────────────────
 public record CreateTaskRequest(

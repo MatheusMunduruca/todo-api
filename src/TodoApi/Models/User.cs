@@ -7,6 +7,7 @@ public class User
     public string Email { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public decimal GoldBalance { get; set; } = 0;
 
     // Navigation property: um User pode ter muitas Tasks
     public ICollection<TodoTask> Tasks { get; set; } = new List<TodoTask>();

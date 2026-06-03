@@ -17,6 +17,12 @@ public class AppDbContext : DbContext
             .HasIndex(u => u.Email)
             .IsUnique();
 
+        // Precisão do Gold (18 dígitos, 2 casas decimais)
+        modelBuilder.Entity<User>()
+            .Property(u => u.GoldBalance)
+            .HasPrecision(18, 2)
+            .HasDefaultValue(0m);
+
         // Configura o relacionamento 1:N entre User e TodoTask
         modelBuilder.Entity<TodoTask>()
             .HasOne(t => t.User)

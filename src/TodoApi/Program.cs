@@ -42,7 +42,10 @@ builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins(
+                  "http://localhost:5173",  // Taverna do Gregor
+                  "http://localhost:5174"   // Empório do Rudolf
+              )
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
