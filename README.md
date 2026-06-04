@@ -2,11 +2,12 @@
 
 API REST para gerenciamento de tarefas com autenticação JWT, construída em C# .NET 8.
 
+![CI](https://github.com/MatheusMunduruca/todo-api/actions/workflows/ci.yml/badge.svg)
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple?logo=dotnet)
 ![C#](https://img.shields.io/badge/C%23-12.0-blue?logo=csharp)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-orange?logo=mysql)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)
-![xUnit](https://img.shields.io/badge/Tests-42%20passing-brightgreen?logo=checkmarx)
+![Tests](https://img.shields.io/badge/Tests-45%20passing-brightgreen?logo=checkmarx)
 ![Swagger](https://img.shields.io/badge/Docs-Swagger-green?logo=swagger)
 
 ---
@@ -33,6 +34,8 @@ A Todo API (Taverna do Gregor) compartilha **usuários e economia de ouro** com 
 - ✅ Containerização com Docker e Docker Compose
 - ✅ 20 testes unitários (xUnit + Moq)
 - ✅ 22 testes de integração (WebApplicationFactory + FluentAssertions + Bogus)
+- ✅ 3 cenários BDD (SpecFlow / Gherkin)
+- ✅ CI no GitHub Actions (build + testes a cada push/PR)
 
 ---
 
@@ -48,6 +51,8 @@ A Todo API (Taverna do Gregor) compartilha **usuários e economia de ouro** com 
 | **Documentação** | Swagger / OpenAPI |
 | **Testes Unitários** | xUnit + Moq + EF Core InMemory |
 | **Testes de Integração** | WebApplicationFactory + FluentAssertions + Bogus |
+| **Testes BDD** | SpecFlow (Gherkin) |
+| **CI/CD** | GitHub Actions |
 
 ---
 
@@ -128,7 +133,12 @@ GET /api/tasks?status=Done
 
 ## 🧪 Testes
 
-O projeto possui **42 testes automatizados** divididos em dois níveis:
+O projeto possui **45 testes automatizados** divididos em três níveis, executados a cada push pelo GitHub Actions:
+
+### Testes BDD (3 cenários) — `TodoApi.BddTests`
+
+Usando **SpecFlow (Gherkin)**. Descrevem o gerenciamento de missões em linguagem de negócio
+(criar missão, concluir missão, exigência de autenticação), executando contra a API real em memória.
 
 ### Testes Unitários (20 testes) — `TodoApi.Tests`
 

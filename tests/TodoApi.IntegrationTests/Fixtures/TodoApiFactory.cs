@@ -12,6 +12,17 @@ namespace TodoApi.IntegrationTests.Fixtures;
 
 public class TodoApiFactory : WebApplicationFactory<Program>
 {
+    // Configura JWT/conexão via variáveis de ambiente — lidas já no CreateBuilder,
+    // então valem tanto para a geração quanto para a validação do token.
+    // Torna os testes independentes do appsettings.json (que é ignorado no Git → CI).
+    static TodoApiFactory()
+    {
+        Environment.SetEnvironmentVariable("Jwt__Key", "chave-de-teste-bem-longa-hmacsha256-todoapi-0123456789");
+        Environment.SetEnvironmentVariable("Jwt__Issuer", "TodoApi");
+        Environment.SetEnvironmentVariable("Jwt__Audience", "TodoApiUsers");
+        Environment.SetEnvironmentVariable("ConnectionStrings__Default", "Server=localhost;Database=t;User=root;Password=t;");
+    }
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
