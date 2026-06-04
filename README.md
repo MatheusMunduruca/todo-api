@@ -1,3 +1,4 @@
+[![CI](https://github.com/MatheusMunduruca/todo-api/actions/workflows/ci.yml/badge.svg)](https://github.com/MatheusMunduruca/todo-api/actions/workflows/ci.yml)
 # 📝 Todo API
 
 API REST para gerenciamento de tarefas com autenticação JWT, construída em C# .NET 8.
