@@ -11,6 +11,16 @@ API REST para gerenciamento de tarefas com autenticação JWT, construída em C#
 
 ---
 
+## 🌌 Universo compartilhado
+
+A Todo API (Taverna do Gregor) compartilha **usuários e economia de ouro** com o **[Empório do Rudolf](https://github.com/MatheusMunduruca/ecommerce-api)** (e-commerce de alquimia):
+
+- **Login único:** ambas as APIs usam a **mesma chave JWT** e a **mesma tabela de usuários** (`todo_db`), então uma conta funciona nos dois sistemas.
+- **Economia única:** o saldo de **Gold Coins** fica em `Users.GoldBalance` e é compartilhado — ganha-se ouro cumprindo tarefas aqui e gasta-se comprando itens no Empório.
+- Novas contas recebem **1.000 de ouro** de boas-vindas.
+
+---
+
 ## 🚀 Funcionalidades
 
 - ✅ Registro e autenticação de usuários com JWT Bearer
@@ -18,6 +28,7 @@ API REST para gerenciamento de tarefas com autenticação JWT, construída em C#
 - ✅ CRUD completo de tarefas
 - ✅ Filtro de tarefas por status
 - ✅ Isolamento por usuário (cada usuário vê apenas suas tarefas)
+- ✅ **Economia de ouro compartilhada** com o Empório do Rudolf (consultar / creditar / deduzir)
 - ✅ Documentação interativa via Swagger/OpenAPI
 - ✅ Containerização com Docker e Docker Compose
 - ✅ 20 testes unitários (xUnit + Moq)
@@ -90,8 +101,11 @@ todo-api/
 
 | Método | Endpoint | Descrição | Auth |
 |--------|----------|-----------|------|
-| `POST` | `/api/auth/register` | Cria novo usuário, retorna JWT | ❌ |
-| `POST` | `/api/auth/login` | Autentica usuário, retorna JWT | ❌ |
+| `POST` | `/api/auth/register` | Cria usuário, concede 1.000 de ouro, retorna JWT | ❌ |
+| `POST` | `/api/auth/login` | Autentica usuário, retorna JWT + saldo | ❌ |
+| `GET`  | `/api/auth/gold` | Saldo de ouro do usuário | ✅ |
+| `POST` | `/api/auth/gold/add` | Credita ouro (recompensa de tarefa) | ✅ |
+| `POST` | `/api/auth/gold/deduct` | Deduz ouro | ✅ |
 
 ### Tasks
 
