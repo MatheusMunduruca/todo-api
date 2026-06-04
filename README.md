@@ -311,7 +311,7 @@ API configurada com CORS para integração com frontend em `http://localhost:517
 **Matheus Munduruca**
 
 [![GitHub](https://img.shields.io/badge/GitHub-MatheusMunduruca-black?logo=github)](https://github.com/MatheusMunduruca)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-matheusmunduruca-blue?logo=linkedin)](https://linkedin.com/in/matheusmunduruca644200209)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-matheusmunduruca-blue?logo=linkedin)](linkedin.com/in/matheusmunduruca)
 
 ---
 
