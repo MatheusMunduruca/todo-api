@@ -4,7 +4,6 @@ obj/
 .vs/
 .vscode/
 *.suo
-.claude/
 
 # ===== Segredos e configuração local =====
 # Ignora TODOS os appsettings, exceto o modelo de exemplo
