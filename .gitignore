@@ -4,6 +4,29 @@ obj/
 .vs/
 .vscode/
 *.suo
-appsettings.Development.json
-appsettings.json
 .claude/
+
+# ===== Segredos e configuração local =====
+# Ignora TODOS os appsettings, exceto o modelo de exemplo
+appsettings.json
+appsettings.*.json
+!appsettings.Example.json
+
+# Arquivos de ambiente
+.env
+.env.*
+!.env.example
+
+# Segredos do .NET / chaves / certificados
+secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.crt
+*.cer
+*.snk
+
+# Arquivos "locais" genéricos (overrides locais)
+*.local
+*.local.json
